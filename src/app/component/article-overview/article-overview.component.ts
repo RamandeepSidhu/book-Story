@@ -1,20 +1,15 @@
-import { Component, OnInit } from '@angular/core';
-import { StoryblokService } from './services/storyblok.service';
-import { Components } from './components';
-declare global {
-  interface Window {
-    storyblok: any;
-  }
-}
+import { Component } from '@angular/core';
+import { StoryblokService } from 'src/app/services/storyblok.service';
 
 @Component({
-  selector: 'app-root',
-  templateUrl: './app.component.html',
-  styleUrls: ['./app.component.scss']
+  selector: 'app-article-overview',
+  templateUrl: './article-overview.component.html',
+  styleUrls: ['./article-overview.component.scss']
 })
-export class AppComponent implements OnInit {
+export class ArticleOverviewComponent {
+
   story: any = { content: null, name: '' };
-  components: any = Components;
+  // components: any = Components;
   headerImage!: string;
   footerContent: any;
 
@@ -31,9 +26,10 @@ export class AppComponent implements OnInit {
       if (siteConfigStory) {
         this.headerImage = siteConfigStory.content.Image.filename;
         this.footerContent = siteConfigStory.content.footer_about.content;
+        this.story = siteConfigStory;
+
       }
 
-      this.story = data.stories[2];
     });
   }
 }

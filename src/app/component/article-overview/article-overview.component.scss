@@ -1,0 +1,61 @@
+/* Add your custom CSS to style the footer elements */
+
+.footer-container {
+  display: flex;
+  justify-content: space-around;
+  padding: 20px;
+  background-color: #333;
+  color: #fff;
+}
+
+.footer-nav,
+.footer-buttons,
+.social-links {
+  flex: 1;
+  padding: 20px;
+}
+
+h3 {
+  font-size: 1.2rem;
+  margin-bottom: 10px;
+}
+
+ul {
+  list-style: none;
+  padding: 0;
+}
+
+li {
+  margin: 5px 0;
+}
+
+a {
+  color: #fff;
+  text-decoration: none;
+}
+
+.btn {
+  display: inline-block;
+  padding: 10px 20px;
+  margin: 10px 0;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+}
+
+.btn-primary {
+  background-color: #007bff;
+  color: #fff;
+}
+
+.btn-secondary {
+  background-color: #6c757d;
+  color: #fff;
+}
+
+/* Font Awesome icons for social links */
+i.fab {
+  margin-right: 10px;
+}
+
+/* Add your custom styles for social links, e.g., change icon colors */

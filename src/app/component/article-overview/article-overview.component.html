@@ -1,0 +1,21 @@
+<footer>
+    <div class="footer-container">
+        <!-- Navigation Links -->
+        <div class="footer-nav" *ngFor="let item of story.content?.footer_about.content">
+            <p class="text-center">{{item.text}}</p>
+        </div>
+        <!-- Buttons -->
+        <div class="footer-buttons">
+            <h3>Buttons</h3>
+            <a class="btn btn-primary" href="#">{{story.Content}}</a>
+            <a class="btn btn-secondary" href="#">Learn More</a>
+        </div>
+        <!-- Social Media Links -->
+        <div class="social-links">
+            <h3>Social Media</h3>
+            <a><i class="fab fa-facebook"></i> Facebook </a><a>
+                <i class="fab fa-twitter"></i> Twitter </a> <a>
+                <i class="fab fa-linkedin"></i> LinkedIn </a>
+        </div>
+    </div>
+</footer>

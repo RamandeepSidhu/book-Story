@@ -1,4 +1,36 @@
-<div class="home-page">
-    <h1>{{ content.body }}</h1>
-    <p>{{ content.Footer }}</p>
+<div class="container mt-4">
+    <div class="row">
+        <div class="col-12 header">
+            <h1 class="text-center">{{ content.body }}</h1>
+            <p class="text-center heading">{{ content.Footer }}</p>
+        </div>
+    </div>
+    <div class="row">
+        <div class="col-6">
+            <!-- Left column content (image) -->
+            <div class="image-container">
+                <img [src]="content.Products.filename" alt="{{ content.Products.alt }}" class="image">
+            </div>
+        </div>
+        <div class="col-6">
+            <h3 class="pt-0 pt-lg-5 about">{{ content.header }}</h3>
+            <div class="text-content">
+                <ng-container *ngFor="let paragraph of content.Text.content">
+                    <ng-container *ngIf="paragraph.type === 'paragraph'">
+                        <p *ngFor="let subContent of paragraph.content">{{ subContent.text }}</p>
+                    </ng-container>
+                    <h2 *ngIf="paragraph.type === 'heading'">{{ paragraph.content[0].text }}</h2>
+                </ng-container>
+            </div>
+            <!-- Display Buttons -->
+            <div class="button-container">
+                <ng-container *ngFor="let button of content.Button">
+                    <a [href]="button.Link.cached_url" class="btn btn-{{ button.Size }}"
+                        [style.background-color]="button.button_color"> {{ button.label }} </a>
+                </ng-container>
+            </div>
+        </div>
+    </div>
+    <div class="row">
+    </div>
 </div>
