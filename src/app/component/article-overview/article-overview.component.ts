@@ -11,7 +11,6 @@ export class ArticleOverviewComponent {
   story: any = { content: null, name: '' };
   // components: any = Components;
   headerImage!: string;
-  footerContent: any;
 
   constructor(private storyblokService: StoryblokService) {
     window.storyblok?.init();
@@ -25,9 +24,7 @@ export class ArticleOverviewComponent {
       const siteConfigStory = data.stories.find((story: any) => story.name === 'Site Config');
       if (siteConfigStory) {
         this.headerImage = siteConfigStory.content.Image.filename;
-        this.footerContent = siteConfigStory.content.footer_about.content;
         this.story = siteConfigStory;
-
       }
 
     });

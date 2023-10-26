@@ -1,0 +1,9 @@
+<div class="banner" [style.background-image]="'url(' + story.content?.Grid[0]?.background_image?.filename + ')'">
+    <div class="banner-content">
+        <h1 class="headline">{{story.content?.Grid[0]?.headline}}</h1>
+        <p class="subheadline">{{story.content?.Grid[0]?.subheadline}}</p>
+        <ng-container *ngFor="let button of story.content?.Grid[0].buttons">
+            <a class="btn btn-{{ button.Size }}" [style.background-color]="button.button_color"> {{button.label}} </a>
+        </ng-container>
+    </div>
+</div>

@@ -1,8 +1,25 @@
-<div class="root">
-  <div *ngIf="story.content">
-    <app-home-page [content]="story.content"></app-home-page>
-    <ndc-dynamic [ndcDynamicComponent]="components[story.content.component]" [ndcDynamicInputs]="story.content">
-    </ndc-dynamic>
+<header>
+  <div class="header">
+    <img [src]="headerImage" alt="Header Image">
   </div>
+  <nav>
+    <a routerLink="/home">HOME</a>
+    <a routerLink="/blogs">Blogs</a>
+  </nav>
+  <div class="button-container">
+    <ng-container *ngIf="siteConfigStory?.content?.header_buttons">
+      <button *ngFor="let item of siteConfigStory.content.header_buttons" class="get-started-button">{{ item?.label
+        }}</button>
+    </ng-container>
+  </div>
+</header>
+<div class="content">
+  <!-- <div *ngIf="story[].content">
+    <ndc-dynamic [ndcDynamicComponent]="components[story.content?.component]"
+      [ndcDynamicInputs]="story.content"></ndc-dynamic>
+  </div> -->
+  <router-outlet></router-outlet>
 </div>
-<router-outlet></router-outlet>
+<footer>
+  <app-article-overview></app-article-overview>
+</footer>

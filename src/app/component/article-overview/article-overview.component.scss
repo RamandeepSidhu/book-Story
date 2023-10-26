@@ -6,6 +6,10 @@
   padding: 20px;
   background-color: #333;
   color: #fff;
+  .description {
+    position: relative;
+    top: 40px;
+  }
 }
 
 .footer-nav,
@@ -59,3 +63,7 @@ i.fab {
 }
 
 /* Add your custom styles for social links, e.g., change icon colors */
+.logo img {
+  position: absolute;
+  left: 0;
+}

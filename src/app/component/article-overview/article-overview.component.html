@@ -1,21 +1,32 @@
 <footer>
     <div class="footer-container">
+        <div class="logo"> <img [src]="story.content?.footer_logo.filename" alt="">
+        </div>
         <!-- Navigation Links -->
-        <div class="footer-nav" *ngFor="let item of story.content?.footer_about.content">
-            <p class="text-center">{{item.text}}</p>
+        <div class="footer-nav description">
+            <p class="text-center" *ngFor="let item of story.content?.footer_about.content[0].content"> {{
+                item.text.length > 0 ? item.text : 'Text is empty' }} </p>
         </div>
         <!-- Buttons -->
         <div class="footer-buttons">
-            <h3>Buttons</h3>
-            <a class="btn btn-primary" href="#">{{story.Content}}</a>
-            <a class="btn btn-secondary" href="#">Learn More</a>
+            <div class="footer-nav">
+                <h2>{{story.content?.footer_nav_2_headline}}</h2>
+                <p class="text-center" *ngFor="let item of story.content?.footer_nav_2"> <a [href]="item.link.url"
+                        target="_blank">{{ item.label }}</a> </p>
+            </div>
+        </div>
+        <div class="footer-buttons">
+            <div class="footer-nav">
+                <h2>{{story.content?.footer_nav_3_headline}}</h2>
+                <p class="text-center" *ngFor="let item of story.content?.footer_nav_2"> {{ item.label }} </p>
+            </div>
         </div>
         <!-- Social Media Links -->
         <div class="social-links">
             <h3>Social Media</h3>
-            <a><i class="fab fa-facebook"></i> Facebook </a><a>
-                <i class="fab fa-twitter"></i> Twitter </a> <a>
-                <i class="fab fa-linkedin"></i> LinkedIn </a>
+            <a [href]="story.content?.LinkedIn.url"><span>LinkedIn</span></a>
+            <a [href]="story.content?.facebook.url"><span>Facebook</span></a>
+            <a [href]="story.content?.twitter.url"><span>Twitter</span></a>
         </div>
     </div>
 </footer>

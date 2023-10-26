@@ -1,18 +1,13 @@
-import { Component, Input } from '@angular/core';
+import { Component } from '@angular/core';
 import { StoryblokService } from 'src/app/services/storyblok.service';
 
 @Component({
-  selector: 'app-home-page',
-  templateUrl: './home-page.component.html',
-  styleUrls: ['./home-page.component.scss']
+  selector: 'app-blogs',
+  templateUrl: './blogs.component.html',
+  styleUrls: ['./blogs.component.scss']
 })
-export class HomePageComponent {
-  // @Input() content: any;
+export class BlogsComponent {
   story: any = { content: null, name: '' };
-  headerImage!: string;
-  footerContent: any;
-  siteConfigStory: any;
-
   constructor(private storyblokService: StoryblokService) {
     window.storyblok?.init();
     window.storyblok?.on(['change', 'published'], function () {
@@ -22,8 +17,8 @@ export class HomePageComponent {
 
   ngOnInit() {
     this.storyblokService.getStories({ version: 'draft' }).then((data) => {
-
-      this.story = data.stories[4];
+      this.story = data.stories[0];
+      console.log(this.story.content?.Grid[0].buttons)
     });
   }
 }
