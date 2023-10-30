@@ -16,8 +16,8 @@ export class AppComponent implements OnInit {
   story: any = { content: null, name: '' };
   components: any = Components;
   headerImage!: string;
-  footerContent: any;
   siteConfigStory: any;
+  navigationName: any;
 
   constructor(private storyblokService: StoryblokService) {
     window.storyblok?.init();
@@ -27,14 +27,15 @@ export class AppComponent implements OnInit {
   }
 
   ngOnInit() {
-    this.storyblokService.getStories({ version: 'draft' }).then((data) => {
-      this.siteConfigStory = data.stories.find((story: any) => story.name === 'Site Config');
-      if (this.siteConfigStory) {
-        this.headerImage = this.siteConfigStory.content.Image.filename;
-        this.footerContent = this.siteConfigStory.content.footer_about.content;
-      }
-
-      this.story = data.stories[4];
-    });
+    this.storyblokService.getStories({ version: 'draft' })
+      .then((data) => {
+        this.story = data.stories;
+        this.navigationName = this.story;
+        const siteConfigStory = data.stories.find((story: any) => story.name === 'Site Config');
+        if (siteConfigStory) {
+          this.headerImage = siteConfigStory.content.Image.filename;
+          this.story = siteConfigStory;
+        }
+      });
   }
 }

@@ -3,8 +3,11 @@
     <img [src]="headerImage" alt="Header Image">
   </div>
   <nav>
-    <a routerLink="/home">HOME</a>
-    <a routerLink="/blogs">Blogs</a>
+    <a class="text-base font-medium text-gray-500 hover:text-gray-900" routerLink="/home">HOME</a>
+    <a class="text-base font-medium text-gray-500 hover:text-gray-900" routerLink="/blogs">Blogs</a>
+    <a class="text-base font-medium text-gray-500 hover:text-gray-900"
+      routerLink="/personalized-landing-page">personalized</a>
+    <!-- <a routerLink="/">personalized</a> -->
   </nav>
   <div class="button-container">
     <ng-container *ngIf="siteConfigStory?.content?.header_buttons">
@@ -14,12 +17,12 @@
   </div>
 </header>
 <div class="content">
-  <!-- <div *ngIf="story[].content">
+  <div *ngIf="story.content">
     <ndc-dynamic [ndcDynamicComponent]="components[story.content?.component]"
       [ndcDynamicInputs]="story.content"></ndc-dynamic>
-  </div> -->
+  </div>
   <router-outlet></router-outlet>
 </div>
 <footer>
-  <app-article-overview></app-article-overview>
+  <app-footer></app-footer>
 </footer>

@@ -10,7 +10,6 @@ let Components = {
     'teaser': TeaserComponent,
     'grid': GridComponent,
     'feature': FeatureComponent,
-    'ariticles': ArticleOverviewComponent
 }
 
 export { Components }

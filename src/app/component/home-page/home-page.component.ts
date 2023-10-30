@@ -23,7 +23,7 @@ export class HomePageComponent {
   ngOnInit() {
     this.storyblokService.getStories({ version: 'draft' }).then((data) => {
 
-      this.story = data.stories[4];
+      this.story = data.stories[5];
     });
   }
 }

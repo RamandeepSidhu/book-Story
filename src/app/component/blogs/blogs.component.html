@@ -3,7 +3,9 @@
         <h1 class="headline">{{story.content?.Grid[0]?.headline}}</h1>
         <p class="subheadline">{{story.content?.Grid[0]?.subheadline}}</p>
         <ng-container *ngFor="let button of story.content?.Grid[0].buttons">
-            <a class="btn btn-{{ button.Size }}" [style.background-color]="button.button_color"> {{button.label}} </a>
+            <a class="btn btn-{{ story.content?.Grid[0].buttons[0].button_color}} btn-{{ button.Size }}">
+                <span class=" text-center  text-{{ story.content?.Grid[0].text_color }}">{{ button.label }}</span>
+            </a>
         </ng-container>
     </div>
 </div>

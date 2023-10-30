@@ -14,8 +14,10 @@ import { TextContentComponent } from './component/text-content/text-content.comp
 import { ImageContentComponent } from './component/image-content/image-content.component';
 import { HomePageComponent } from './component/home-page/home-page.component';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
-import { ArticleOverviewComponent } from './component/article-overview/article-overview.component';
 import { BlogsComponent } from './component/blogs/blogs.component';
+import { HttpClient, HttpClientModule } from '@angular/common/http';
+import { FooterComponent } from './component/footer/footer.component';
+import { ArticleOverviewComponent } from './component/article-overview/article-overview.component';
 
 @NgModule({
   declarations: [
@@ -30,9 +32,12 @@ import { BlogsComponent } from './component/blogs/blogs.component';
     HomePageComponent,
     ArticleOverviewComponent,
     BlogsComponent,
+    FooterComponent,
   ],
-  imports: [BrowserModule, DynamicModule, FormsModule, ReactiveFormsModule, AppRoutingModule],
+  imports: [BrowserModule, DynamicModule, FormsModule, ReactiveFormsModule, AppRoutingModule, HttpClientModule],
   bootstrap: [AppComponent],
+  exports: [BrowserModule, DynamicModule, ArticleOverviewComponent],
+  providers: [StoryblokService],
   schemas: [CUSTOM_ELEMENTS_SCHEMA]
 
 })

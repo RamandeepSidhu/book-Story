@@ -1,4 +1,5 @@
 import { Component } from '@angular/core';
+import { Components } from 'src/app/components';
 import { StoryblokService } from 'src/app/services/storyblok.service';
 
 @Component({
@@ -7,26 +8,21 @@ import { StoryblokService } from 'src/app/services/storyblok.service';
   styleUrls: ['./article-overview.component.scss']
 })
 export class ArticleOverviewComponent {
-
   story: any = { content: null, name: '' };
-  // components: any = Components;
-  headerImage!: string;
+  components: any = Components;
+  grid: any;
 
   constructor(private storyblokService: StoryblokService) {
     window.storyblok?.init();
     window.storyblok?.on(['change', 'published'], function () {
-      location.reload();
+      location.reload()
     });
   }
 
   ngOnInit() {
-    this.storyblokService.getStories({ version: 'draft' }).then((data) => {
-      const siteConfigStory = data.stories.find((story: any) => story.name === 'Site Config');
-      if (siteConfigStory) {
-        this.headerImage = siteConfigStory.content.Image.filename;
-        this.story = siteConfigStory;
-      }
-
-    });
+    this.storyblokService.getStory('personalized-landing-page', { version: 'draft' })
+      .then(data => {
+        this.grid = data.story.content.Grid;
+      });
   }
 }

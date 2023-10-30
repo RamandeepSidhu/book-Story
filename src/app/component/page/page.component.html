@@ -1,5 +1,5 @@
 <div>
-    <div [appStoryblok]="_editable">
+    <div class="text-center mt-4" [appStoryblok]="_editable">
         <div *ngFor="let blok of body">
             <ndc-dynamic *ngIf="components" [ndcDynamicComponent]="components[blok.component]"
                 [ndcDynamicInputs]="blok">
