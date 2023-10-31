@@ -1,29 +1,35 @@
-<footer>
+<footer v-editable="your-storyblok-key">
     <div class="footer-container">
-        <div class="logo"> <img [src]="story.content?.footer_logo.filename" alt="">
+        <div class="logo" [attr.blok-uid]="story.content._uid" [appStoryblok]="story.content._editable"> <img
+                [src]="story.content?.footer_logo.filename" alt="">
         </div>
         <!-- Navigation Links -->
-        <div class="footer-nav description">
+        <div class="footer-nav description" [attr.blok-uid]="story.content?.footer_about.content[0]._uid"
+            [appStoryblok]="story.content?.footer_about.content[0]._editable">
             <p class="text-center" *ngFor="let item of story.content?.footer_about.content[0].content">
-                <span>{{ item.text.length > 0 ? item.text : 'Text is empty' }}</span>
+                <span [attr.blok-uid]="story.content._uid" [appStoryblok]="story.content._editable">{{ item.text.length
+                    > 0 ? item.text : 'Text is empty' }}</span>
             </p>
         </div>
         <!-- Buttons -->
         <div class="footer-buttons">
-            <div class="footer-nav">
+            <div class="footer-nav" [attr.blok-uid]="story.content._uid" [appStoryblok]="story.content._editable">
                 <h2>{{story.content?.footer_nav_2_headline}}</h2>
-                <p class="text-center" *ngFor="let item of story.content?.footer_nav_2"> <a [href]="item.link.url"
-                        target="_blank">{{ item.label }}</a> </p>
+                <p class="text-center" *ngFor="let item of story.content?.footer_nav_2"> <a
+                        class="text-base font-medium text-gray-500 hover:text-gray-900" target="_blank"><span
+                            [attr.blok-uid]="item._uid" [appStoryblok]="item._editable">{{ item.label }}</span></a> </p>
             </div>
         </div>
         <div class="footer-buttons">
-            <div class="footer-nav">
+            <div class="footer-nav" [attr.blok-uid]="story.content?._uid" [appStoryblok]="story.content?._editable">
                 <h2>{{story.content?.footer_nav_3_headline}}</h2>
-                <p class="text-center" *ngFor="let item of story.content?.footer_nav_2"> {{ item.label }} </p>
+                <p class="text-center" *ngFor="let item of story.content?.footer_nav_2"> <a
+                        class="text-base font-medium text-gray-500 hover:text-gray-900"> <span
+                            [attr.blok-uid]="item._uid" [appStoryblok]="item._editable">{{ item.label }}</span></a></p>
             </div>
         </div>
         <!-- Social Media Links -->
-        <div class="social-links">
+        <div class="social-links" [attr.blok-uid]="story.content?._uid" [appStoryblok]="story.content?._editable">
             <h3>Social Media</h3>
             <a [href]="story.content?.LinkedIn.url"><span>LinkedIn</span></a>
             <a [href]="story.content?.facebook.url"><span>Facebook</span></a>

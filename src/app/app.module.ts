@@ -18,6 +18,7 @@ import { BlogsComponent } from './component/blogs/blogs.component';
 import { HttpClient, HttpClientModule } from '@angular/common/http';
 import { FooterComponent } from './component/footer/footer.component';
 import { ArticleOverviewComponent } from './component/article-overview/article-overview.component';
+import { VEditableDirective } from './directives/custom-editable.directive';
 
 @NgModule({
   declarations: [
@@ -33,11 +34,12 @@ import { ArticleOverviewComponent } from './component/article-overview/article-o
     ArticleOverviewComponent,
     BlogsComponent,
     FooterComponent,
+    VEditableDirective
   ],
   imports: [BrowserModule, DynamicModule, FormsModule, ReactiveFormsModule, AppRoutingModule, HttpClientModule],
   bootstrap: [AppComponent],
   exports: [BrowserModule, DynamicModule, ArticleOverviewComponent],
-  providers: [StoryblokService],
+  providers: [StoryblokService, VEditableDirective],
   schemas: [CUSTOM_ELEMENTS_SCHEMA]
 
 })

@@ -1,9 +1,12 @@
-<div class="banner" [style.background-image]="'url(' + story.content?.Grid[0]?.background_image?.filename + ')'">
-    <div class="banner-content">
-        <h1 class="headline">{{story.content?.Grid[0]?.headline}}</h1>
+<div class="banner" [style.background-image]="'url(' + story.content?.Grid[0]?.background_image?.filename + ')'"
+    [attr.blok-uid]="story.content.Grid[0]._uid">
+    <div class="banner-content" [appStoryblok]="story.content.Grid[0]._editable">
+        <h1 class="headline" [attr.blok-uid]="story.content.Grid[0]._uid"
+            [appStoryblok]="story.content.Grid[0]._editable">{{story.content?.Grid[0]?.headline}}</h1>
         <p class="subheadline">{{story.content?.Grid[0]?.subheadline}}</p>
         <ng-container *ngFor="let button of story.content?.Grid[0].buttons">
-            <a class="btn btn-{{ story.content?.Grid[0].buttons[0].button_color}} btn-{{ button.Size }}">
+            <a [appStoryblok]="story.Grid[0].buttons?._editable"
+                class="btn btn-{{ story.content?.Grid[0].buttons[0].button_color}} btn-{{ button.Size }}">
                 <span class=" text-center  text-{{ story.content?.Grid[0].text_color }}">{{ button.label }}</span>
             </a>
         </ng-container>

@@ -18,7 +18,6 @@ export class AppComponent implements OnInit {
   headerImage!: string;
   siteConfigStory: any;
   navigationName: any;
-
   constructor(private storyblokService: StoryblokService) {
     window.storyblok?.init();
     window.storyblok?.on(['change', 'published'], function () {

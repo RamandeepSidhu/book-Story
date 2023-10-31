@@ -18,5 +18,6 @@ export class GridComponent implements OnInit {
   @Input() columns!: any[];
   @Input() _editable: any;
 
-  ngOnInit() { }
+  ngOnInit() {
+  }
 }

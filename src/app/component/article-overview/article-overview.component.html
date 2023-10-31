@@ -1,67 +1,47 @@
 <div *ngIf="story" class="container">
-    <!-- <div class="banner-container"
-        [ngStyle]="{'background-image': 'url(' + (story[0]?.returning_visitor_blocks[0]?.background_image?.filename || '') + ')'}">
-        <h1
-            class="mb-4 text-center text-3xl font-black leading-tight md:text-4xl md:leading-tight lg:text-5xl lg:leading-tight text-{{story[0]?.returning_visitor_blocks[0]?.text_color}}">
-            {{ story[0]?.returning_visitor_blocks[0].headline }} </h1>
-        <h2
-            class="text-md text-center font-thin md:text-lg lg:text-xl text-{{story[0]?.returning_visitor_blocks[0]?.text_color}}">
-            {{ story[0]?.returning_visitor_blocks[0].subheadline }} </h2>
-        <div class="" *ngFor="let story of grid">
-            <div class="blog-container">
-                <div *ngFor="let story of grid" class="blog-post">
-                    <h2>{{ story.content.headline }}</h2>
-                    <p>{{ story.content.teaser }}</p>
-                    <img [src]="story.content.image.filename" alt="" />
-                    <div *ngFor="let item of story.content.text.content">
-                        <p>{{ item.content[0].text }}</p>
-                    </div>
-                    <a [routerLink]="['/blog', story.slug]">Read more</a>
-                </div>
-            </div>
-        </div>
-    </div> -->
     <section class="hero">
-        <div class="background-image justify-content-center"
+        <div class="background-image justify-content-center" [attr.blok-uid]="grid[0]?._uid"
+            [appStoryblok]="grid[0]?._editable"
             [ngStyle]="{'background-image': 'url(' + grid[0]?.background_image?.filename + ')', 'height': '500px'}">
-            <h1 class="text-center text-white">{{grid[0]?.headline}}</h1>
+            <h1 class="text-center text-white storyblok--outline" [appStoryblok]="grid[0]?._editable"
+                [attr.blok-uid]="grid[0]?._uid">{{grid[0]?.headline}}</h1>
             <br>
-            <h4 class="text-center text-white">{{grid[0]?.subtitle}}</h4>
-            <div class="text-center">
+            <h4 class="text-center text-white" [appStoryblok]="grid[0]?._editable">{{grid[0]?.subtitle}}</h4>
+            <div class="text-center" [appStoryblok]="grid[0]?.button[0]?._editable">
                 <button class="btn btn-{{grid[0]?.button[0]?.button_color}}"
                     role="button">{{grid[0]?.button[0]?.label}}</button>
             </div>
         </div>
     </section>
-    <div class="row">
-        <h1 class=" text-center">{{grid[1]?.headline}}</h1>
-        <p class="text-center">{{grid[1]?.lead}}</p>
-        <div>
+    <div class="row" [attr.blok-uid]="grid[1]?._uid">
+        <h1 class=" text-center" [appStoryblok]="grid[1]?._editable">{{grid[1]?.headline}}</h1>
+        <p class="text-center" [appStoryblok]="grid[1]?._editable">{{grid[1]?.lead}}</p>
+        <div [appStoryblok]="grid[1]?._editable">
             <p class="text-center">{{grid[1]?.text.content[0]?.content[0]?.text}}</p>
             <p class="text-center">{{grid[1]?.text.content[1]?.content[0]?.text}}</p>
         </div>
-        <div class=" d-flex justify-content-center">
+        <div class=" d-flex justify-content-center" [appStoryblok]="grid[1]?.button[0]?._editable">
             <button
                 class="btn btn-{{grid[1]?.button[0]?.button_color}} btn-{{grid[1]?.button[0]?.Size}} ">{{grid[1]?.button[0]?.label}}</button>
         </div>
     </div>
-    <div class="row">
-        <div class="col">
+    <div class="row" [attr.blok-uid]="grid[3]?._uid">
+        <div class="col" [appStoryblok]="grid[3]?._editable">
             <h1 class=" text-center">{{grid[3]?.headline}}</h1>
             <p class="text-center">{{grid[3]?.subheadline}}</p>
         </div>
-        <div class="d-flex justify-content-center">
+        <div class="d-flex justify-content-center" [appStoryblok]="grid[3]?.button[0]?._editable">
             <button
                 class="btn btn-{{grid[3]?.button[0]?.button_color}} btn-{{grid[3]?.button[0]?.Size}} ">{{grid[3]?.button[0]?.label}}
             </button>
         </div>
-        <div>
+        <div [appStoryblok]="grid[3]?._editable">
             <p class="text-center">{{grid[3]?.text.content[0]?.content[0]?.text}}</p>
             <p class="text-center">{{grid[3]?.text.content[1]?.content[0]?.text}}</p>
         </div>
     </div>
-    <div class="row">
-        <div class="col">
+    <div class="row" [attr.blok-uid]="grid[4]?._uid">
+        <div class="col" [appStoryblok]="grid[4]?._editable">
             <h1 class="text-center">{{grid[4]?.heading}}</h1>
             <p class="text-center">{{grid[4]?.lead}}</p>
         </div>
@@ -69,33 +49,33 @@
     <div class="row">
         <div class="col-12 col-sm-6 col-md-4" *ngFor="let card of grid[4].cards; let i = index">
             <div class="card">
-                <div class="card-header">
+                <div class="card-header" [appStoryblok]="card._editable">
                     <h3 class="text-center">{{ card.General }}</h3>
                 </div>
-                <div class="card-body">
-                    <img class="mx-auto d-block" width="{{ card.icon_width }}" [src]="card.icon.filename">
+                <div class="card-body" [appStoryblok]="card._editable"> <img class="mx-auto d-block"
+                        width="{{ card.icon_width }}" [src]="card.icon.filename">
                     <p>{{ card.Text }}</p>
                 </div>
             </div>
         </div>
     </div>
-    <div class="row"
+    <div class="row" [appStoryblok]="grid[5]?._editable" [attr.blok-uid]="grid[5]?._uid"
         [ngStyle]="{'background-image': 'url(' + grid[5]?.background_image?.filename + ')', 'height': '500px'}">
         <div class="col-12 ">
             <h1 class="text-center">{{grid[5]?.headline}}</h1>
             <p class="text-center">{{grid[5]?.lead}}</p>
         </div>
     </div>
-    <div class="row">
+    <div class="row" [attr.blok-uid]="grid[7]?._uid">
         <section class="bg-dark ">
-            <div class="col-12 ">
+            <div class="col-12 " [appStoryblok]="grid[7]?._editable">
                 <div class="text-center text-white lg:text-left">
                     <h1 class="text-center">{{grid[7]?.headlines}}</h1>
                     <p class="text-center">{{grid[7]?.lead}}</p>
                 </div>
             </div>
             <form>
-                <div class="row">
+                <div class="row" [attr.blok-uid]="grid[7]?._uid">
                     <p class=" text-white">{{grid[7]?.text}}</p>
                     <div class="col-8">
                         <input class="form-control" type="email" placeholder="Your email" required="">
